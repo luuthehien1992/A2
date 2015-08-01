@@ -1,6 +1,8 @@
 package com.lthien.hoclichsu.activities;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
@@ -99,9 +101,30 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
         }
 
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            Intent intent = new Intent(this, ChapterDetailActivity.class);
-            intent.putExtra("chapter", chapters.get(chapterIdx));
-            startActivityForResult(intent, 2);
+            final Chapter chapter = chapters.get(chapterIdx);
+            chapters.remove(chapter);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder.setMessage("Bạn đã trả lời đúng câu hỏi lớn. Bạn có muốn xem thông tin ?")
+                    .setTitle("Thông báo")
+                    .setPositiveButton("Xem", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(getBaseContext(), ChapterDetailActivity.class);
+                            intent.putExtra("chapter", chapter);
+                            startActivityForResult(intent, 2);
+                        }
+                    })
+                    .setNegativeButton("Chơi tiếp", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            initGame();
+                        }
+                    });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
 
         if (requestCode == 2) {
@@ -137,11 +160,20 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
     private void initGame() {
         initBtnQuestionList();
 
+        if (chapters.size() <= 0) {
+            Toast.makeText(this, "Hết câu hỏi", Toast.LENGTH_LONG).show();
+            endGame();
+            return;
+        }
         chapterIdx = randomChapter(chapters);
 
         int resID = getResources().getIdentifier(chapters.get(chapterIdx).getChapterImage(), "drawable", getPackageName());
 
         gameLayout.setBackground(getResources().getDrawable(resID));
+    }
+
+    private void endGame() {
+        finish();
     }
 
     private int randomChapter(List<Chapter> chapters) {
