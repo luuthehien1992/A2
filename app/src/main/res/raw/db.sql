@@ -63,6 +63,12 @@ INSERT INTO `CHAPTER_TABLE` (CHAPTER_ID,CHAPTER_IMAGE,CHAPTER_QUESTIONS,CHAPTER_
   "image": null, 
   "answers": ["1789","1760","1790","1779"],
   "answersIdx": 0
+},
+{
+  "content": "Nguyễn Ánh lại là người đặt dấu chấm hết cho triều đại này?",
+  "image": null, 
+  "answers": ["Vua Lê - Chúa Trịnh","Triều MẠC","Tây Sơn","Triều Hậu Lê"],
+  "answersIdx": 2
 }
 ]
 ','Ông là nhà quân sự thiên tài, là người anh hùng áo vải đã đánh đổ cả hai tập đoàn thống trị phản động ở Đàng Trong và Đàng Ngoài?','nguyen hue',' Nguyễn Huệ sinh năm 1753 –Sinh ra tại thôn Kiên Mỹ, ấp Kiên Thành, huyện Hoài Nhơn, phủ Quy Nhơn (nay thuộc xã Bình Thành, huyện Tây Sơn, tỉnh Bình Định). Thân sinh Quang Trung là ông Hồ Phi Phúc và bà Nguyễn Thị Đồng.<br>
