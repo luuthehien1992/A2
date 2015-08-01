@@ -1,12 +1,13 @@
 package com.lthien.hoclichsu.pojo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by lthien.
  */
-public class Question {
+public class Question implements Serializable {
     private String content;
     private String image;
     private List<String> answers;

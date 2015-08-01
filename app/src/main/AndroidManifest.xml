@@ -16,13 +16,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity-->
-            <!--android:name=".GameActivity"-->
-            <!--android:label="@string/title_activity_game" >-->
-        <!--</activity>-->
+        <!-- <activity -->
+        <!-- android:name=".GameActivity" -->
+        <!-- android:label="@string/title_activity_game" > -->
+        <!-- </activity> -->
         <activity
             android:name=".QuestionActivity"
             android:label="@string/title_activity_question" >
+        </activity>
+        <activity
+            android:name=".QuestionChapterActivity"
+            android:label="@string/title_activity_image_question" >
+        </activity>
+        <activity
+            android:name=".ChapterDetailActivity"
+            android:label="@string/title_activity_chapter_detail" >
         </activity>
     </application>
 

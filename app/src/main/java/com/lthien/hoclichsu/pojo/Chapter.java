@@ -6,16 +6,19 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lthien.hoclichsu.sqlite.DBAdapter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by lthien.
  */
-public class Chapter {
+public class Chapter implements Serializable {
     private int id;
     private String chapterImage;
-    private String chapterquestion;
+    private String chapterQuestion;
+    private String chapterAnswer;
+    private String chapterDescription;
     private List<Question> questions;
 
     public Chapter() {
@@ -46,19 +49,37 @@ public class Chapter {
         this.questions = questions;
     }
 
-    public String getChapterquestion() {
-        return chapterquestion;
+    public String getChapterQuestion() {
+        return chapterQuestion;
     }
 
-    public void setChapterquestion(String chapterquestion) {
-        this.chapterquestion = chapterquestion;
+    public void setChapterQuestion(String chapterQuestion) {
+        this.chapterQuestion = chapterQuestion;
+    }
+
+    public String getChapterAnswer() {
+        return chapterAnswer;
+    }
+
+    public void setChapterAnswer(String chapterAnswer) {
+        this.chapterAnswer = chapterAnswer;
+    }
+
+    public String getChapterDescription() {
+        return chapterDescription;
+    }
+
+    public void setChapterDescription(String chapterDescription) {
+        this.chapterDescription = chapterDescription;
     }
 
     public static Chapter createFromCursor(Cursor cursor) {
         Chapter chapter = new Chapter();
         chapter.setId(cursor.getInt(cursor.getColumnIndex(DBAdapter.CHAPTER_ID)));
         chapter.setChapterImage(cursor.getString(cursor.getColumnIndex(DBAdapter.CHAPTER_IMAGE)));
-        chapter.setChapterquestion(cursor.getString(cursor.getColumnIndex(DBAdapter.CHAPTER_IMAGE_QUESTIONS)));
+        chapter.setChapterQuestion(cursor.getString(cursor.getColumnIndex(DBAdapter.CHAPTER_IMAGE_QUESTIONS)));
+        chapter.setChapterAnswer(cursor.getString(cursor.getColumnIndex(DBAdapter.CHAPTER_IMAGE_ANSWER)));
+        chapter.setChapterDescription(cursor.getString(cursor.getColumnIndex(DBAdapter.CHAPTER_IMAGE_DESCRIPTION)));
 
         String json = cursor.getString(cursor.getColumnIndex(DBAdapter.CHAPTER_QUESTIONS));
         Gson gson = new Gson();

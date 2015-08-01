@@ -17,7 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="7.5"
-            android:background="@drawable/nguyentrai">
+            android:background="@drawable/nguyentrai"
+            android:id="@+id/gameLayout">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -124,9 +125,26 @@
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="2.5"></LinearLayout>
+            android:layout_weight="2.5"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trả lời nhanh"
+                android:id="@+id/btnAnswer"
+                android:layout_gravity="center_horizontal" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chịu thua"
+                android:id="@+id/btnEndGame"
+                android:layout_gravity="right" />
+
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

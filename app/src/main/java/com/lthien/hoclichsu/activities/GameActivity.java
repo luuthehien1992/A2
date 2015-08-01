@@ -1,12 +1,16 @@
 package com.lthien.hoclichsu.activities;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.lthien.hoclichsu.pojo.Chapter;
 import com.lthien.hoclichsu.pojo.Question;
@@ -21,12 +25,17 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
 
     private List<Button> btnQuestionList = new ArrayList<>();
     private List<Chapter> chapters;
-    private Chapter chapter;
+    private int chapterIdx;
+    private int questionIdx;
+    private Button btnAnswer;
+    private LinearLayout gameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        gameLayout = (LinearLayout) findViewById(R.id.gameLayout);
 
         btnQuestionList.add((Button) findViewById(R.id.btn_1));
         btnQuestionList.add((Button) findViewById(R.id.btn_2));
@@ -37,6 +46,9 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
         btnQuestionList.add((Button) findViewById(R.id.btn_7));
         btnQuestionList.add((Button) findViewById(R.id.btn_8));
         btnQuestionList.add((Button) findViewById(R.id.btn_9));
+
+        btnAnswer = (Button) findViewById(R.id.btnAnswer);
+        btnAnswer.setOnClickListener(this);
 
         for (int i = 0; i < btnQuestionList.size(); i++) {
             btnQuestionList.get(i).setOnClickListener(this);
@@ -72,28 +84,70 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v) {
-        int idx = btnQuestionList.indexOf(v);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        Question question = chapter.getQuestions().get(idx);
+        if (requestCode == 0 && resultCode == RESULT_OK) {
+            boolean answerResult = data.getBooleanExtra("answerResult", false);
+            if (answerResult) {
+                btnQuestionList.get(questionIdx).setSelected(true);
+            } else {
+                btnQuestionList.get(questionIdx).setEnabled(false);
+            }
+        }
+
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            Intent intent = new Intent(this, ChapterDetailActivity.class);
+            intent.putExtra("chapter", chapters.get(chapterIdx));
+            startActivityForResult(intent, 2);
+        }
+
+        if (requestCode == 2) {
+            initGame();
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if (v.getId() == R.id.btnAnswer) {
+            Intent intent = new Intent(this, QuestionChapterActivity.class);
+            intent.putExtra("chapter", chapters.get(chapterIdx));
+            startActivityForResult(intent, 1);
+            return;
+        }
+
+        if (v.isSelected()) {
+            return;
+        }
+
+        questionIdx = btnQuestionList.indexOf(v);
+
+        Question question = chapters.get(chapterIdx).getQuestions().get(questionIdx);
 
         Intent intent = new Intent(this, QuestionActivity.class);
+        intent.putExtra("question", question);
         startActivityForResult(intent, 0);
         overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void initGame() {
         initBtnQuestionList();
 
-        chapter = randomChapter(chapters);
+        chapterIdx = randomChapter(chapters);
+
+        int resID = getResources().getIdentifier(chapters.get(chapterIdx).getChapterImage(), "drawable", getPackageName());
+
+        gameLayout.setBackground(getResources().getDrawable(resID));
     }
 
-    private Chapter randomChapter(List<Chapter> chapters) {
+    private int randomChapter(List<Chapter> chapters) {
         Random rand = new Random();
 
         int randomNum = rand.nextInt(chapters.size());
 
-        return chapters.get(randomNum);
+        return randomNum;
     }
 
     private void initBtnQuestionList() {

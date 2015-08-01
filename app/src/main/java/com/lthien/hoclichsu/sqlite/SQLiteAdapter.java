@@ -58,7 +58,9 @@ public class SQLiteAdapter extends DBAdapter {
                                 CHAPTER_ID,
                                 CHAPTER_IMAGE,
                                 CHAPTER_IMAGE_QUESTIONS,
-                                CHAPTER_QUESTIONS
+                                CHAPTER_QUESTIONS,
+                                CHAPTER_IMAGE_ANSWER,
+                                CHAPTER_IMAGE_DESCRIPTION
                         },
                 null,
                 new String[]
