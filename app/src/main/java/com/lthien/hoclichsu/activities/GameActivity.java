@@ -91,8 +91,10 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
             boolean answerResult = data.getBooleanExtra("answerResult", false);
             if (answerResult) {
                 btnQuestionList.get(questionIdx).setSelected(true);
+                btnQuestionList.get(questionIdx).setText("");
             } else {
                 btnQuestionList.get(questionIdx).setEnabled(false);
+                btnQuestionList.get(questionIdx).setText("");
             }
         }
 
@@ -154,6 +156,7 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
         for (int i = 0; i < btnQuestionList.size(); i++) {
             btnQuestionList.get(i).setSelected(false);
             btnQuestionList.get(i).setEnabled(true);
+            btnQuestionList.get(i).setText(String.valueOf(i + 1));
         }
     }
 }
