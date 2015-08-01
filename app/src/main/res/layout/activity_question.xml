@@ -70,7 +70,8 @@
                         android:layout_height="wrap_content"
                         android:text="New RadioButton"
                         android:id="@+id/radB"
-                        android:checked="false" />
+                        android:checked="false"
+                        android:layout_marginTop="15dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -91,7 +92,8 @@
                         android:layout_height="wrap_content"
                         android:text="New RadioButton"
                         android:id="@+id/radD"
-                        android:checked="false" />
+                        android:checked="false"
+                        android:layout_marginTop="15dp" />
 
                 </LinearLayout>
             </RadioGroup>
@@ -101,7 +103,8 @@
                 android:layout_height="wrap_content"
                 android:text="Trả Lời"
                 android:id="@+id/btnAnswer"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp" />
 
         </LinearLayout>
     </LinearLayout>
