@@ -158,3 +158,119 @@ INSERT INTO `CHAPTER_TABLE` (CHAPTER_ID,CHAPTER_IMAGE,CHAPTER_QUESTIONS,CHAPTER_
 ','Người mở nền chính thống cho các triều đại phong kiến trong lịch sử?','dinh bo linh','Đinh Tiên Hoàng (sinh 22 tháng 3 năm 924, mất tháng 10 năm 979), tên thật là Đinh Bộ Lĩnh hoặc Đinh Hoàn, ở thôn Kim Lư, làng Đại Hữu, châu Đại Hoàng (nay thuộc xã Gia Phương, Gia Viễn, Ninh Bình). Cha của ông là Đinh Công Trứ, nha tướng của Dương Đình Nghệ, giữ chức thứ sử Hoan Châu. Đinh Công Trứ mất sớm, Bộ Lĩnh theo mẹ về quê ở. Từ bé Đinh Bộ Lĩnh đã tỏ ra là người có khả năng chỉ huy, ông cùng các bạn chăn trâu lấy bông lau làm cờ bày trận đánh nhau.<br>
 Năm 944 Ngô Quyền mất. Anh/em vợ của Ngô Quyền là Dương Tam Kha tự lập làm vua là Dương Bình Vương. Các nơi không chịu khuất phục, nhiều thủ lĩnh tức lên cát cứ một vùng thường đem quân đánh chiếm lẫn nhau. Đến năm 966, hình thành đủ 12 sứ quân, sử gọi là loạn 12 sứ quân. Chỉ trong vài năm, Đinh Bộ Lĩnh lần lượt đánh thắng 11 sứ quân khác, được xưng tụng là Vạn Thắng Vương. Chiến tranh kết thúc năm 968. Đinh Bộ Lĩnh lên ngôi hoàng đế. Thắng lợi của Đinh Bộ Lĩnh là thắng lợi của xu hướng thống nhất quốc gia, của tinh thần dân tộc và ý chí độc lập trong nhân dân. Năm Mậu Thìn 968, Đinh Bộ Lĩnh lên ngôi Hoàng đế, tự xưng là Đại Thắng Minh Hoàng đế, là vị hoàng đế sáng lập triều đại nhà Đinh, đặt quốc hiệu là Đại Cồ Việt, đóng đô ở Hoa Lư. Từ năm Canh Ngọ 970, bắt đầu đặt hiệu năm là Thái Bình. Đinh Tiên Hoàng truyền cho đúc tiền đồng, là tiền tệ xưa nhất ở Việt Nam, gọi là tiền đồng Thái Bình.[25] Nhà Đinh cũng là triều đại đầu tiên đặt nền móng cho nền tài chính - tiền tệ của Nhà nước phong kiến Việt Nam. Đại Cồ Việt  là quốc hiệu Việt Nam dưới thời nhà Đinh, nhà Tiền Lê và nhà Lý. Quốc hiệu Đại Cồ Việt tồn tại 86 năm kể từ khi Đinh Bộ Lĩnh thống nhất giang sơn, lên ngôi hoàng đế năm 968 cho đến đời vua Lý Thái Tông năm 1054.
 ');
+INSERT INTO `CHAPTER_TABLE` (CHAPTER_ID,CHAPTER_IMAGE,CHAPTER_QUESTIONS,CHAPTER_IMAGE_QUESTIONS,CHAPTER_IMAGE_ANSWER,CHAPTER_IMAGE_DESCRIPTION) VALUES (3,'tran_quoc_tuan','[
+  {
+    "content": "Hội nghị nào được xem như hội nghị dân chủ đầu tiên trong lịch sử Việt Nam?",
+    "image": null,
+    "answers": [
+      "Tân Trào",
+      "Hương Cảng",
+      "Diên Hồng",
+      "Đông Quan"
+    ],
+    "answersIdx": 2
+  },
+  {
+    "content": "Ai là một quyền thần có ảnh hưởng lớn đến Triều đại nhà Trần, có vai trò to lớn trong việc họ Trần thay ngôi họ Lý?",
+    "image": null,
+    "answers": [
+      "Lê Sát",
+      "Trần Thủ Độ",
+      "Trần Cảnh",
+      "Trần Liễu"
+    ],
+    "answersIdx": 1
+  },
+  {
+    "content": "Trần Liễu với Trần Cảnh có quan hệ gì?",
+    "image": null,
+    "answers": [
+      "Là một người",
+      "Bạn chiên đấu",
+      "Cha con",
+      "Anh em"
+    ],
+    "answersIdx": 3
+  },
+  {
+    "content": "Nữ hoàng đầu tiên và duy nhất trong lịch sử Việt Nam là ai?",
+    "image": null,
+    "answers": [
+      "Bà Huyện Thanh Quan",
+      "Lý Chiêu Hoàng",
+      "Triệu Thị Trinh",
+      "Hồ Xuân Hương"
+    ],
+    "answersIdx": 1
+  },
+  {
+    "content": "Anh hùng chống giặc Nguyên vào thế kỷ XIII, lặn xuống biển, nằm dưới đáy thuyền,  đục thủng thuyền giặc?",
+    "image": null,
+    "answers": [
+      "Yết Kiêu",
+      "Phạm Ngũ Lão",
+      "Dã Tượng",
+      "Hà Đặc"
+    ],
+    "answersIdx": 0
+  },
+  {
+    "content": "Lý Chiêu Hoàng có quan hệ gì với Trần Cảnh? ",
+    "image": null,
+    "answers": [
+      "Anh em",
+      "Vợ Chồng",
+      "Cha con",
+      "không quen biết"
+    ],
+    "answersIdx": 1
+  },
+  {
+    "content": "Trần Cảnh lên ngôi lấy hiệu là gì?",
+    "image": null,
+    "answers": [
+      "Trần Thánh Tông",
+      "Trần Nhân Tông",
+      "Trần Thái Tông",
+      "Trần Anh Tông"
+    ],
+    "answersIdx": 2
+  },
+  {
+    "content": "Nơi diễn ra ba trận thủy chiến đánh bại quân xâm lược Nam Hán (938),Tống (981) Nguyên (1288)?",
+    "image": null,
+    "answers": [
+      "Sông Bạch Đằng",
+      "Sông Hồng",
+      "Sông Sài Gòn",
+      "Sông Tiền Giang Mỹ Tho"
+    ],
+    "answersIdx": 0
+  },
+  {
+    "content": "Nữ hoàng nào đã nhường ngôi cho chồng?",
+    "image": null,
+    "answers": [
+      "Bùi Thị Xuân",
+      "Ỷ Lan",
+      "Lý Chiêu Hoàng",
+      "Nam Phương"
+    ],
+    "answersIdx": 2
+  }
+]','Anh hùng dân tộc có tài quân sự, đánh bại quân xâm lược trên sông Bạch Đằng?','tran quoc tuan','Vào thế kỷ XIII, dưới thời Vương triều nhà Trần, dân tộc Đại Việt đã sinh ra một con người vĩ đại, một nhà quân sự kiệt xuất, một anh hùng của dân tộc.<br><br>
+            Trần Quốc Tuấn  là con trai của An Sinh Vương Trần Liễu, cháu ruột của vua Trần Thái Tông (tức Trần Cảnh) và Thượng hoàng Trần Thừa. Ông kết hôn với công chúa Thiên Thành và sinh hạ 4 vị vương tổ, 2 vị vương cô. <br><br>
+            Vốn là người trong tộc họ tôn thất, sớm được triều đình trọng dụng và là công thần phò 4 đời vua Trần: Thái Tôn, Thánh Tôn, Nhân Tông, Anh Tôn. <br><br>
+            Thưở nhỏ, ông có tướng mạo khôi ngô, thông minh hơn người, được rèn dạy kỹ càng, ai cũng khen là bậc kỳ tài, ngày sau có thể kinh bang tế thế. Lớn lên Trần Quốc Tuấn càng thông minh suất chúng, đọc rộng hiểu nhiều, tài kiêm văn võ. Khi trưởng thành cũng có lúc gia đình có sự bất hoà trong hoàng tộc và đất nước đứng trước nguy cơ hạo xâm lăng của ngoại bang. Trần Quốc Tuấn đã đặt lợi ích đất nước, dân tộc lên trên hết. Gạt bỏ mối thù nhà, ông ra sức giao hảo đoàn kết tướng sĩ, đoàn kết quân dân, đoàn kết vương triều, tạo ra sức mạnh tổng hợp của cả dân tộc Đại Việt để đánh thắng quân thù. <br><br>
+            Năm 1257 nhận chiếu của vua Trần Thái Tông chỉ huy các cánh quân thuỷ bộ ra chặn giặc giữ biên giới trong cuộc kháng chiến chống Nguyên Mông lần thứ nhất (1258). <br><br>
+            Năm 1283 tiến phong làm Tiết Chế thống lĩnh toàn quân chuẩn bị và chỉ huy chống giặc lần thứ hai (1285) <br><br>
+            Năm 1284 điều quân của các quân hầu, duyệt binh ở Đông Bộ Đầu, chia quân đóng giữ các nơi hiểm yếu chuẩn bị chống giặc. <br><br>
+            Năm 1285 tổng chỉ huy đánh thắng giặc lần thứ hai. <br><br>
+            Năm 1286 nhận lệnh vua  đốc thúc Vương Hầu tôn thất điều đông quân lính, vũ khí, thuyền bè chống giặc. <br><br>
+            Năm 1287-1288 tổng chỉ huy quân dân đánh thắng giặc lần thứ ba. <br><br>
+            Năm 1289 tiến phong là Hưng Đạo Vương. Năm Canh Tý ông mất ở Phủ Đệ Vạn Kiếp, được vua Trần phong tước: Thái Sư-Thượng Phụ- Thương Quốc Công Nhân Vũ hưng Đạo Vương. <br><br>
+            Ông là một nhà văn hoá lớn, kiến thức uyên bác và năng lực sáng tạo phong phú các tác phẩm chính của ông: <br><br>
+            - Hịch tướng sĩ. <br><br>
+            - Binh gia diện lý yếu lược (Binh gia yếu lược). <br><br>
+            - Vạn kiếp tông bí truyền thư (Vạn kiếp binh thư) <br><br>
+');
