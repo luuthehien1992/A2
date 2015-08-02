@@ -5,12 +5,24 @@
     android:orientation="vertical">
 
     <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Dân ta nên biết sử ta \nAi mà chưa biết nên chơi game này"
+        android:id="@+id/textView5"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold|italic"
+        android:textSize="20dp" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Trò chơi Theo dòng Sử Việt giúp người dùng vừa chơi vừa học lịch sử , nắm được các kiến thức về nhận vật và sự kiện lịch sử. Ra đời trong cuộc thi Thiết kế phần mềm giáo dục HACKADEMICS"
+        android:text="Trò chơi Theo Dòng Sử Việt giúp người dùng vừa chơi vừa học lịch sử , nắm được các kiến thức về nhận vật và sự kiện lịch sử. Ra đời trong cuộc thi Thiết kế phần mềm giáo dục HACKADEMICS"
         android:id="@+id/textView4"
-        android:layout_gravity="center_vertical" />
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,4 +31,5 @@
         android:text="Nhóm A2 gồm 4 thành viên : \n- Dương Văn Đeo \n- Võ Duy Nguyên \n- Trần Trung Nguyên \n- Lưu Thế Hiển"
         android:id="@+id/textView3"
         android:layout_marginTop="20dp" />
+
 </LinearLayout>
