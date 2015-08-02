@@ -155,6 +155,23 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
         }
     }
 
+    private void showEndGameDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage("Bạn có muốn kết thúc game ?")
+                .setTitle("Thông báo")
+                .setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        endGame();
+                    }
+                })
+                .setNegativeButton("Không", null);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
     private void startNewGame() {
         calculatePoint();
         initGame();
@@ -178,7 +195,7 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
     public void onClick(View v) {
 
         if (v.getId() == R.id.btnEndGame) {
-            endGame();
+            showEndGameDialog();
             return;
         }
 
@@ -309,19 +326,6 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        builder.setMessage("Bạn có muốn kết thúc game ?")
-                .setTitle("Thông báo")
-                .setPositiveButton("Có", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        endGame();
-                    }
-                })
-                .setNegativeButton("Không", null);
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        showEndGameDialog();
     }
 }
