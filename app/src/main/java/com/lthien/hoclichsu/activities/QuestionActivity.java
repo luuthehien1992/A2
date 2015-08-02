@@ -147,10 +147,10 @@ public class QuestionActivity extends ActionBarActivity implements View.OnClickL
     }
 
     private void btnAnswer_OnClick() {
-        String msg = "Bạn đã trả lời sai";
+        String msg = "Sai rồi bạn ơi! :'(";
         boolean answerResult = false;
         if (questionIdx == question.getAnswersIdx()) {
-            msg = "Bạn đã trả lời đúng";
+            msg = "Chính xác! Bạn giỏi quá đi";
             answerResult = true;
         }
 

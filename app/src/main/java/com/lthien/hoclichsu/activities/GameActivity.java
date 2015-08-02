@@ -186,7 +186,7 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
     private void showEndGameDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setMessage("Bạn có muốn kết thúc game ?")
+        builder.setMessage("Bạn chịu thua à?")
                 .setTitle("Thông báo")
                 .setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
