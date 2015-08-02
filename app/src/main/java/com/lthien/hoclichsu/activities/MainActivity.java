@@ -1,5 +1,6 @@
 package com.lthien.hoclichsu.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
@@ -15,7 +16,7 @@ import android.widget.Toast;
 import com.lthien.hoclichsu.sqlite.SQLiteAdapter;
 
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener {
 
     private Button btnStart;
     private Button btnAbout;

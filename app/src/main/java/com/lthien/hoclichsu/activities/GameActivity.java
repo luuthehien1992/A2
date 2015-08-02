@@ -283,7 +283,7 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
             maxPoint = point;
             editor.putInt("maxPoint", maxPoint);
         }
-        builder.setMessage("Xin chúc mừng! \nBạn đạt được: " + point + " điểm\nĐiểm cao nhất là: " + maxPoint)
+        builder.setMessage("Kết thúc game \nBạn đạt được: " + point + " điểm\nĐiểm cao nhất là: " + maxPoint)
                 .setTitle("Thông báo")
                 .setPositiveButton("Đóng", new DialogInterface.OnClickListener() {
                     @Override
