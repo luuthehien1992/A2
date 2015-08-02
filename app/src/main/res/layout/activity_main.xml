@@ -1,7 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/background">
 
     <LinearLayout
         android:orientation="vertical"
@@ -20,6 +21,14 @@
             android:layout_height="100dp"
             android:text="Thông tin"
             android:id="@+id/btnAbout"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="Xếp Hạng"
+            android:id="@+id/btnRecord"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp" />
     </LinearLayout>

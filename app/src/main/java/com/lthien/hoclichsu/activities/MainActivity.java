@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.lthien.hoclichsu.sqlite.SQLiteAdapter;
 
@@ -18,6 +19,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private Button btnStart;
     private Button btnAbout;
+    private Button btnRecord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         btnAbout = (Button) findViewById(R.id.btnAbout);
         btnAbout.setOnClickListener(this);
+
+        btnRecord = (Button) findViewById(R.id.btnRecord);
+        btnRecord.setOnClickListener(this);
+
 
         SharedPreferences sharedPreferences = getSharedPreferences("save", MODE_PRIVATE);
 
@@ -72,6 +78,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             case R.id.btnAbout:
                 Intent intent = new Intent(this, AboutActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.btnRecord:
+                Toast.makeText(this, "Chức năng đang phát triển", Toast.LENGTH_LONG).show();
                 break;
         }
     }
