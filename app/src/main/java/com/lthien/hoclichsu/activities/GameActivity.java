@@ -85,6 +85,7 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
             chaptersInit();
 
             initGame();
+            btnAnswer.performClick();
         }
     }
 
@@ -204,6 +205,7 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
         calculatePoint();
         initGame();
         updateGameState();
+        btnAnswer.performClick();
     }
 
     private void calculatePoint() {
