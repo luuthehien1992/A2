@@ -11,15 +11,16 @@
 
         <Button
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:text="Bắt đầu"
             android:id="@+id/btnStart" />
 
         <Button
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:text="Thông tin"
             android:id="@+id/btnAbout"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp" />
     </LinearLayout>
 </LinearLayout>

@@ -53,15 +53,15 @@
             android:gravity="center_horizontal">
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Trả lời"
                 android:id="@+id/btnAnswer" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Quay về"
+                android:text="Câu hỏi gợi ý"
                 android:id="@+id/btnBack"
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
