@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,9 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.lthien.hoclichsu.pojo.Chapter;
+import com.lthien.hoclichsu.pojo.GameState;
 import com.lthien.hoclichsu.pojo.Question;
 import com.lthien.hoclichsu.sqlite.SQLiteAdapter;
 
@@ -30,6 +34,10 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
     private int chapterIdx;
     private int questionIdx;
     private Button btnAnswer;
+    private Button btnEndGame;
+    private TextView txtPoint;
+    private int point = 0;
+
     private LinearLayout gameLayout;
 
     @Override
@@ -38,6 +46,8 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
         setContentView(R.layout.activity_game);
 
         gameLayout = (LinearLayout) findViewById(R.id.gameLayout);
+
+        txtPoint = (TextView) findViewById(R.id.txtPoint);
 
         btnQuestionList.add((Button) findViewById(R.id.btn_1));
         btnQuestionList.add((Button) findViewById(R.id.btn_2));
@@ -52,14 +62,26 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
         btnAnswer = (Button) findViewById(R.id.btnAnswer);
         btnAnswer.setOnClickListener(this);
 
+        btnEndGame = (Button) findViewById(R.id.btnEndGame);
+        btnEndGame.setOnClickListener(this);
+
         for (int i = 0; i < btnQuestionList.size(); i++) {
             btnQuestionList.get(i).setOnClickListener(this);
         }
 
-        SQLiteAdapter sqLiteAdapter = SQLiteAdapter.createInstance(this);
-        chapters = sqLiteAdapter.getAll();
+        SharedPreferences sharedPreferences = getSharedPreferences("save", MODE_PRIVATE);
 
-        initGame();
+        if (sharedPreferences.contains("state")) {
+            String json = sharedPreferences.getString("state", "");
+            GameState gameState = new Gson().fromJson(json, GameState.class);
+
+            resumeGame(gameState);
+        } else {
+            SQLiteAdapter sqLiteAdapter = SQLiteAdapter.createInstance(this);
+            chapters = sqLiteAdapter.getAll();
+
+            initGame();
+        }
     }
 
 
@@ -98,6 +120,7 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
                 btnQuestionList.get(questionIdx).setEnabled(false);
                 btnQuestionList.get(questionIdx).setText("");
             }
+            updateGameState();
         }
 
         if (requestCode == 1 && resultCode == RESULT_OK) {
@@ -119,7 +142,7 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
                     .setNegativeButton("Chơi tiếp", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            initGame();
+                            startNewGame();
                         }
                     });
 
@@ -128,12 +151,36 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
         }
 
         if (requestCode == 2) {
-            initGame();
+            startNewGame();
         }
+    }
+
+    private void startNewGame() {
+        calculatePoint();
+        initGame();
+        updateGameState();
+    }
+
+    private void calculatePoint() {
+        int count = 0;
+        for (int i = 0; i < btnQuestionList.size(); i++) {
+            Button btn = btnQuestionList.get(i);
+            if (btn.isEnabled() && !btn.isSelected()) {
+                count++;
+            }
+        }
+        point += count + 1;
+
+        txtPoint.setText(String.valueOf(point));
     }
 
     @Override
     public void onClick(View v) {
+
+        if (v.getId() == R.id.btnEndGame) {
+            endGame();
+            return;
+        }
 
         if (v.getId() == R.id.btnAnswer) {
             Intent intent = new Intent(this, QuestionChapterActivity.class);
@@ -173,6 +220,11 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     private void endGame() {
+        SharedPreferences sharedPreferences = getSharedPreferences("save", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("state");
+        editor.commit();
+
         finish();
     }
 
@@ -190,5 +242,86 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
             btnQuestionList.get(i).setEnabled(true);
             btnQuestionList.get(i).setText(String.valueOf(i + 1));
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
+    }
+
+    private void updateGameState() {
+        GameState gameState = getGameState();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("save", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("state", new Gson().toJson(gameState));
+        editor.commit();
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    private void resumeGame(GameState gameState) {
+        point = gameState.getPoint();
+        chapterIdx = gameState.getChapterIdx();
+        chapters = gameState.getChapters();
+
+        for (int i = 0; i < btnQuestionList.size(); i++) {
+            int state = gameState.getBtnState().get(i);
+
+            if (state == GameState.WRONG) {
+                btnQuestionList.get(i).setEnabled(false);
+                btnQuestionList.get(i).setText("");
+            } else if (state == GameState.RIGHT) {
+                btnQuestionList.get(i).setSelected(true);
+                btnQuestionList.get(i).setText("");
+            }
+        }
+
+        txtPoint.setText(String.valueOf(point));
+
+        int resID = getResources().getIdentifier(chapters.get(chapterIdx).getChapterImage(), "drawable", getPackageName());
+
+        gameLayout.setBackground(getResources().getDrawable(resID));
+    }
+
+    private GameState getGameState() {
+        GameState gameState = new GameState();
+        gameState.setChapterIdx(chapterIdx);
+        gameState.setChapters(chapters);
+        gameState.setPoint(point);
+
+        List<Integer> btnStates = new ArrayList<>();
+        for (int i = 0; i < btnQuestionList.size(); i++) {
+            Button btn = btnQuestionList.get(i);
+
+            if (!btn.isEnabled()) {
+                btnStates.add(GameState.WRONG);
+            } else if (btn.isSelected()) {
+                btnStates.add(GameState.RIGHT);
+            } else {
+                btnStates.add(GameState.NONE);
+            }
+        }
+        gameState.setBtnState(btnStates);
+
+        return gameState;
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage("Bạn có muốn kết thúc game ?")
+                .setTitle("Thông báo")
+                .setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        endGame();
+                    }
+                })
+                .setNegativeButton("Không", null);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

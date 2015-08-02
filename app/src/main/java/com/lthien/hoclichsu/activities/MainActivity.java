@@ -1,6 +1,7 @@
 package com.lthien.hoclichsu.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,6 +23,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         btnStart = (Button) findViewById(R.id.btnStart);
         btnStart.setOnClickListener(this);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("save", MODE_PRIVATE);
+
+        if (sharedPreferences.contains("state")) {
+            Intent intent = new Intent(this, GameActivity.class);
+            startActivity(intent);
+        }
     }
 
 
@@ -61,5 +69,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private void btnStart_OnClick() {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("save", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("state");
+        editor.commit();
     }
 }
