@@ -8,9 +8,11 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,14 +40,14 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
     private TextView txtPoint;
     private int point = 0;
 
-    private LinearLayout gameLayout;
+    private ViewGroup gameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        gameLayout = (LinearLayout) findViewById(R.id.gameLayout);
+        gameLayout = (ViewGroup) findViewById(R.id.gameLayout);
 
         txtPoint = (TextView) findViewById(R.id.txtPoint);
 
@@ -80,8 +82,35 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
             SQLiteAdapter sqLiteAdapter = SQLiteAdapter.createInstance(this);
             chapters = sqLiteAdapter.getAll();
 
+            chaptersInit();
+
             initGame();
         }
+    }
+
+    private List<Chapter> chaptersInit() {
+
+        for (int i = 0; i < chapters.size(); i++) {
+            List<Question> temp = questionsInit(chapters.get(i).getQuestions());
+            chapters.get(i).setQuestions(temp);
+        }
+
+        return chapters;
+    }
+
+    private List<Question> questionsInit(List<Question> questions) {
+        List<Question> list = new ArrayList<>();
+
+        Random random = new Random();
+        for (int i = 0; i < 9; i++) {
+            int idx = random.nextInt(questions.size());
+            Log.d("AA", String.valueOf(idx));
+            Question question = questions.get(idx);
+            list.add(question);
+            questions.remove(question);
+        }
+
+        return list;
     }
 
 
