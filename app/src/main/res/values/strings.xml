@@ -6,7 +6,7 @@
     <string name="title_activity_question">Câu hỏi</string>
     <string name="title_activity_image_question">Trả lời hình nền</string>
     <string name="title_activity_chapter_detail">Nhân vật - Sự kiện</string>
-    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_about">Thông tin</string>
 
     <string name="hello_world">Hello world!</string>
 </resources>
