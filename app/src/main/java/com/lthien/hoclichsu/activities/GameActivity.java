@@ -274,12 +274,29 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     private void endGame() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         SharedPreferences sharedPreferences = getSharedPreferences("save", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove("state");
-        editor.commit();
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        finish();
+        int maxPoint = sharedPreferences.getInt("maxPoint", 0);
+        if (maxPoint < point) {
+            maxPoint = point;
+            editor.putInt("maxPoint", maxPoint);
+        }
+        builder.setMessage("Xin chúc mừng! \nBạn đạt được: " + point + " điểm\nĐiểm cao nhất là: " + maxPoint)
+                .setTitle("Thông báo")
+                .setPositiveButton("Đóng", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        editor.remove("state");
+                        editor.commit();
+
+                        finish();
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private int randomChapter(List<Chapter> chapters) {
