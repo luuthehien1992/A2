@@ -3,6 +3,7 @@ package com.lthien.hoclichsu.activities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -80,11 +81,17 @@ public class QuestionChapterActivity extends ActionBarActivity implements View.O
         String answer = edtAnswer.getText().toString();
 
         if (answer.equals(chapter.getChapterAnswer())) {
+            final MediaPlayer mp = MediaPlayer.create(this, R.raw.magic_chime_01);
+            mp.start();
+
             Intent intent = getIntent();
             intent.putExtra("answerResult", true);
             setResult(RESULT_OK, intent);
             finish();
         } else {
+            final MediaPlayer mp = MediaPlayer.create(this, R.raw.fail_trombone_03);
+            mp.start();
+
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
             builder.setMessage("Bạn trả lời chưa đúng")

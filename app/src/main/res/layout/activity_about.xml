@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lthien.hoclichsu.activities.AboutActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Trò chơi Theo dòng Sử Việt giúp người dùng vừa chơi vừa học lịch sử , nắm được các kiến thức về nhận vật và sự kiện lịch sử. Ra đời trong cuộc thi Thiết kế phần mềm giáo dục HACKADEMICS"
+        android:id="@+id/textView4"
+        android:layout_gravity="center_vertical" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Nhóm A2 gồm 4 thành viên : \n- Dương Văn Đeo \n- Võ Duy Nguyên \n- Trần Trung Nguyên \n- Lưu Thế Hiển"
+        android:id="@+id/textView3"
+        android:layout_marginTop="20dp" />
+</LinearLayout>

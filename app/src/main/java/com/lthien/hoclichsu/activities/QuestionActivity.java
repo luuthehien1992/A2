@@ -3,6 +3,7 @@ package com.lthien.hoclichsu.activities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -150,8 +151,14 @@ public class QuestionActivity extends ActionBarActivity implements View.OnClickL
         String msg = "Sai rồi bạn ơi! :'(";
         boolean answerResult = false;
         if (questionIdx == question.getAnswersIdx()) {
+            final MediaPlayer mp = MediaPlayer.create(this, R.raw.magic_chime_01);
+            mp.start();
+
             msg = "Chính xác! Bạn giỏi quá đi";
             answerResult = true;
+        } else {
+            final MediaPlayer mp = MediaPlayer.create(this, R.raw.fail_trombone_03);
+            mp.start();
         }
 
         showResultAndFinish(msg, answerResult);
@@ -159,21 +166,25 @@ public class QuestionActivity extends ActionBarActivity implements View.OnClickL
 
 
     private void showResultAndFinish(String msg, final boolean answerResult) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        builder.setMessage(msg)
-                .setTitle("Thông báo")
-                .setPositiveButton("Đóng", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = getIntent();
-                        intent.putExtra("answerResult", answerResult);
-                        setResult(RESULT_OK, intent);
-                        finish();
-                    }
-                });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//
+//        builder.setMessage(msg)
+//                .setTitle("Thông báo")
+//                .setPositiveButton("Đóng", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Intent intent = getIntent();
+//                        intent.putExtra("answerResult", answerResult);
+//                        setResult(RESULT_OK, intent);
+//                        finish();
+//                    }
+//                });
+//
+//        AlertDialog dialog = builder.create();
+//        dialog.show();
+        Intent intent = getIntent();
+        intent.putExtra("answerResult", answerResult);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }

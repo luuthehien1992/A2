@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -85,7 +86,6 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
             chaptersInit();
 
             initGame();
-            btnAnswer.performClick();
         }
     }
 
@@ -192,6 +192,9 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
                 .setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        final MediaPlayer mp = MediaPlayer.create(getApplication(), R.raw.fail_trombone_03);
+                        mp.start();
+
                         endGame();
                     }
                 })
@@ -205,7 +208,6 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
         calculatePoint();
         initGame();
         updateGameState();
-        btnAnswer.performClick();
     }
 
     private void calculatePoint() {
@@ -240,6 +242,9 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
             return;
         }
 
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.magic_chime_01);
+        mp.start();
+
         questionIdx = btnQuestionList.indexOf(v);
 
         Question question = chapters.get(chapterIdx).getQuestions().get(questionIdx);
@@ -264,6 +269,8 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
         int resID = getResources().getIdentifier(chapters.get(chapterIdx).getChapterImage(), "drawable", getPackageName());
 
         gameLayout.setBackground(getResources().getDrawable(resID));
+
+        btnAnswer.performClick();
     }
 
     private void endGame() {
@@ -311,6 +318,11 @@ public class GameActivity extends ActionBarActivity implements View.OnClickListe
         point = gameState.getPoint();
         chapterIdx = gameState.getChapterIdx();
         chapters = gameState.getChapters();
+
+        if (chapters.size() == 0) {
+            endGame();
+            return;
+        }
 
         for (int i = 0; i < btnQuestionList.size(); i++) {
             int state = gameState.getBtnState().get(i);

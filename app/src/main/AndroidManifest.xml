@@ -16,10 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         <activity
-         android:name=".GameActivity"
-         android:label="@string/title_activity_game" >
-         </activity>
+        <activity
+            android:name=".GameActivity"
+            android:label="@string/title_activity_game" >
+        </activity>
         <activity
             android:name=".QuestionActivity"
             android:label="@string/title_activity_question" >
@@ -31,6 +31,10 @@
         <activity
             android:name=".ChapterDetailActivity"
             android:label="@string/title_activity_chapter_detail" >
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_activity_about" >
         </activity>
     </application>
 
