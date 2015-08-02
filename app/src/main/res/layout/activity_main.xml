@@ -2,34 +2,69 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    android:orientation="vertical">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="center">
+        android:layout_height="fill_parent">
 
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:text="Bắt đầu"
-            android:id="@+id/btnStart" />
 
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:text="Thông tin"
-            android:id="@+id/btnAbout"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp" />
 
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:text="Xếp Hạng"
-            android:id="@+id/btnRecord"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:gravity="center">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/trongdong"
+                android:layout_marginTop="50dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="75dp"
+                    android:text="Bắt đầu"
+                    android:id="@+id/btnStart" />
+
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="75dp"
+                    android:text="Thông tin"
+                    android:id="@+id/btnAbout" />
+
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="75dp"
+                    android:text="Xếp Hạng"
+                    android:id="@+id/btnRecord" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
     </LinearLayout>
+
 </LinearLayout>
